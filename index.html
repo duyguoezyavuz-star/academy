@@ -1,0 +1,326 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta property="og:title" content="Duygu Beauty Academy">
+<meta property="og:description" content="Beauty-Schulungen in Gaggenau: 2 Tage, max. 2 Teilnehmerinnen, echte Modelle, lebenslange Nachbetreuung.">
+<meta property="og:image" content="duygu.jpg">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💗</text></svg>">
+<title>Duygu Beauty Academy</title>
+<meta name="description" content="Schulungen für Wimpernextensions, Korean Lashlifting, Aquafacial und Head Spa in Gaggenau. 2 Tage, max. 2 Teilnehmerinnen, echte Modelle, lebenslange Nachbetreuung.">
+<link rel="stylesheet" href="fonts/fonts.css">
+<style>
+/* Layout: one-page landing in Duygu's OnePage look (dusty rose + black, serif display), single light look */
+:root{
+  --rose:#D99598; --rose-soft:#EBC3C5; --rose-deep:#B86E74; --blush:#F7E4E5;
+  --ink:#121012; --ink-2:#2A2224; --muted:#4A3A3D; --cream:#FFF7F7;
+  --display:"Playfair Display",Georgia,"Times New Roman",serif;
+  --body:"Open Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{background:var(--rose);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.65;margin:0}
+.wrap{max-width:1060px;margin:0 auto;padding-left:max(18px,env(safe-area-inset-left,0px));padding-right:max(18px,env(safe-area-inset-right,0px))}
+h1,h2,h3{font-family:var(--display);line-height:1.12;margin:0;text-wrap:balance;font-weight:600}
+h1{font-size:clamp(38px,7.5vw,68px)}
+h2{font-size:clamp(30px,5vw,46px)}
+h3{font-size:24px}
+p{margin:0}
+img{max-width:100%;display:block}
+a:focus-visible,summary:focus-visible{outline:3px solid var(--ink);outline-offset:3px;border-radius:6px}
+.eyebrow{font-family:var(--display);font-size:clamp(20px,3vw,26px);font-weight:500}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font-weight:600;font-size:16px;padding:16px 26px;border-radius:10px;text-decoration:none;background:var(--ink);color:var(--rose-soft);border:2px solid var(--ink)}
+.btn:hover{background:var(--ink-2)}
+.btn.light{background:transparent;color:var(--ink)}
+.btn.light:hover{background:var(--ink);color:var(--rose-soft)}
+.btn svg{width:20px;height:20px;flex:none}
+
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:rgba(217,149,152,.95);backdrop-filter:blur(8px);border-bottom:1px solid rgba(18,16,18,.12)}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--rose)}
+.bar .wrap{display:flex;justify-content:space-between;align-items:center;gap:12px;padding-block:10px}
+.logo{display:flex;flex-direction:column;text-decoration:none;color:var(--ink);line-height:1}
+.logo b{font-family:"Arial Narrow",Impact,sans-serif;font-weight:800;font-size:24px;letter-spacing:.01em}
+.logo small{font-size:10px;letter-spacing:.28em;margin-top:3px}
+.bar .btn{padding:10px 16px;font-size:14px}
+
+.hero{padding-block:40px 64px}
+.hero .wrap{display:grid;grid-template-columns:1fr 1.05fr;gap:40px;align-items:center}
+.hero-img{border-radius:18px;overflow:hidden;box-shadow:0 30px 60px -30px rgba(18,16,18,.55);aspect-ratio:9/10;max-width:100%}
+.hero-img img{width:100%;height:100%;object-fit:cover}
+.hero-text{display:grid;gap:20px;min-width:0}
+.hero-text .lead{font-size:18px;max-width:560px}
+.ctas{display:flex;flex-wrap:wrap;gap:12px}
+@media (max-width:800px){.hero .wrap{grid-template-columns:1fr}.hero-text{order:2}}
+
+.facts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-top:8px}
+.facts div{background:var(--rose-soft);border-radius:14px;padding:14px}
+.facts b{display:block;font-family:var(--display);font-size:24px;line-height:1.1}
+.facts span{font-size:13px;color:var(--muted)}
+@media (max-width:560px){.facts{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+section{padding-block:64px}
+.sec-head{display:grid;gap:10px;margin-bottom:32px;max-width:700px}
+.center{text-align:center;margin-inline:auto;justify-items:center}
+
+.dark{background:radial-gradient(ellipse at center,#3A2E30 0%,var(--ink) 70%);color:var(--rose)}
+.dark h2{color:var(--rose)}
+.stars{color:#F5B731;letter-spacing:4px;font-size:22px}
+.why{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+@media (max-width:700px){.why{grid-template-columns:1fr}}
+.why div{border:1px solid rgba(217,149,152,.35);border-radius:16px;padding:22px;display:grid;gap:6px}
+.why h3{color:var(--rose);font-size:22px}
+.why p{color:var(--rose-soft)}
+
+.courses{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+@media (max-width:780px){.courses{grid-template-columns:1fr}}
+.course{background:var(--blush);border-radius:20px;overflow:hidden;display:flex;flex-direction:column}
+.course .pics{display:grid;grid-template-columns:1fr 1fr;gap:4px;background:var(--rose-soft)}
+.course .pics img{width:100%;aspect-ratio:6/5;object-fit:cover}
+.course .body{padding:24px;display:flex;flex-direction:column;gap:14px;flex:1}
+.course .tag{align-self:flex-start;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;background:var(--ink);color:var(--rose-soft);padding:5px 10px;border-radius:999px}
+.price{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.price b{font-family:var(--display);font-size:42px;line-height:1;font-variant-numeric:tabular-nums}
+.price span{font-size:14px;color:var(--muted)}
+.course ul{margin:0;padding-left:20px;display:grid;gap:4px}
+.course .btn{margin-top:auto;align-self:flex-start}
+.course.noimg .body{padding-top:28px}
+
+.incl{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+@media (max-width:780px){.incl{grid-template-columns:1fr}}
+.incl div{background:var(--rose-soft);border-radius:16px;padding:20px;display:grid;gap:6px}
+.incl h3{font-size:21px}
+.incl p{color:var(--muted)}
+
+.steps{list-style:none;margin:0;padding:0;display:grid;gap:14px;counter-reset:s}
+.steps li{counter-increment:s;display:grid;grid-template-columns:52px 1fr;gap:16px;align-items:start;background:var(--blush);border-radius:16px;padding:18px}
+.steps li::before{content:counter(s);font-family:var(--display);font-weight:700;font-size:24px;color:var(--rose-soft);background:var(--ink);width:52px;height:52px;border-radius:50%;display:grid;place-items:center}
+.steps b{display:block;font-size:17px}
+.steps span{color:var(--muted)}
+
+.about .wrap{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+@media (max-width:780px){.about .wrap{grid-template-columns:1fr}}
+.quote{font-family:var(--display);font-size:clamp(26px,4vw,38px);font-style:italic;line-height:1.2}
+.about p+p{margin-top:12px}
+
+details{background:var(--ink);color:var(--rose);border-radius:18px;margin-bottom:12px}
+summary{cursor:pointer;list-style:none;padding:22px 24px;font-family:var(--display);font-size:20px;display:flex;justify-content:space-between;gap:12px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font-family:var(--body);font-weight:300;font-size:28px;line-height:1}
+details[open] summary::after{content:"–"}
+details p{padding:0 24px 22px;color:var(--rose-soft)}
+
+.final .box{background:var(--ink);color:var(--rose);border-radius:22px;padding:40px 28px;display:grid;gap:18px;justify-items:center;text-align:center}
+.final .box p{max-width:560px;color:var(--rose-soft)}
+.final .btn{background:var(--rose);color:var(--ink);border-color:var(--rose)}
+.final .btn:hover{background:var(--rose-soft)}
+.final .btn.light{background:transparent;color:var(--rose);border-color:var(--rose)}
+
+.legal{background:var(--ink);color:var(--rose-soft);padding-block:48px;font-size:15px}
+.legal h2{color:var(--rose);font-size:30px;margin-bottom:18px}
+.legal h3{color:var(--rose);font-size:20px;margin:22px 0 8px}
+.legal a{color:var(--rose)}
+.legal .todo{background:#3A2E30;border-radius:10px;padding:10px 14px;display:inline-block}
+.legal-details{background:#1E191B;color:var(--rose-soft);border-radius:14px;margin-top:22px}
+.legal-details summary{font-size:20px;color:var(--rose)}
+.legal-text{padding:0 24px 22px;display:grid;gap:8px;max-width:760px}
+.legal-text h3{margin:14px 0 0;font-size:17px}
+.legal-text p{padding:0;color:var(--rose-soft)}
+</style>
+</head>
+<body>
+
+<header class="bar">
+  <div class="wrap">
+    <a class="logo" href="#top"><b>DUYGU BEAUTY</b><small>ACADEMY</small></a>
+    <a class="btn" href="#kurse">Schulungen</a>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap">
+      <div class="hero-img"><img src="duygu.jpg" alt="Duygu Özyavuz, Trainerin der Duygu Beauty Academy"></div>
+      <div class="hero-text">
+        <div class="eyebrow">Starte deine Beauty-Karriere</div>
+        <h1>In 2 Tagen zur zertifizierten Beauty-Expertin</h1>
+        <p class="lead">Wimpern, Korean Lashlifting, Aquafacial oder Head Spa: Du lernst praxisnah an echten Modellen, mit Starter-Set, persönlicher Betreuung und allem, was du für deinen erfolgreichen Start im Beauty-Business brauchst.</p>
+        <div class="ctas">
+          <a class="btn" href="https://wa.me/4917621118978?text=Hallo%20Duygu%2C%20ich%20m%C3%B6chte%20ein%20kostenloses%20Erstgespr%C3%A4ch%20zur%20Academy." target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>
+            Kostenloses Erstgespräch</a>
+          <a class="btn light" href="#kurse">Schulungen ansehen</a>
+        </div>
+        <div class="facts">
+          <div><b>2 Tage</b><span>Theorie &amp; Praxis</span></div>
+          <div><b>max. 2</b><span>Teilnehmerinnen</span></div>
+          <div><b>seit 2015</b><span>im Beauty-Business</span></div>
+          <div><b>lebenslang</b><span>Nachbetreuung</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="dark">
+    <div class="wrap">
+      <div class="sec-head center">
+        <h2>Warum meine Academy die richtige Wahl ist</h2>
+        <div class="stars" aria-label="5 Sterne">★★★★★</div>
+        <p style="color:var(--rose-soft)">Viele Schulungen vermitteln vor allem Theorie. In meiner Academy bekommst du das volle Paket.</p>
+      </div>
+      <div class="why">
+        <div><h3>Starter-Set &amp; Unterlagen</h3><p>Alles dabei, um direkt loszulegen, inklusive ausführlichem Schulungsskript.</p></div>
+        <div><h3>Kleine Gruppen</h3><p>Maximal zwei Teilnehmerinnen. Ich stehe wirklich neben dir.</p></div>
+        <div><h3>Echte Modelle</h3><p>Du übst an echten Menschen statt nur am Übungskopf.</p></div>
+        <div><h3>Kundengewinnung &amp; Social Media</h3><p>So kommst du an deine ersten Kundinnen und füllst deinen Kalender.</p></div>
+        <div><h3>Zertifikat</h3><p>Dein Nachweis über Teilnahme und praktische Ausbildung.</p></div>
+        <div><h3>Lebenslange Nachbetreuung</h3><p>Fragen und Fotos per WhatsApp, auch noch Jahre später.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="kurse">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Deine Schulung im Überblick</h2>
+        <p class="muted">Alle Schulungen: 2 Tage Intensivkurs, Theorie &amp; Praxis an echten Modellen, Starter-Set, Skript, Zertifikat und Nachbetreuung. Ratenzahlung über PayPal oder Klarna möglich.</p>
+      </div>
+      <div class="courses">
+        <article class="course">
+          <div class="pics"><img src="lash1.jpg" alt="Wimpernverlängerung Nahaufnahme"><img src="lash2.jpg" alt="Pinzette mit Extension"></div>
+          <div class="body">
+            <span class="tag">Bestseller</span>
+            <h3>Wimpernextensions 1:1 &amp; Volumen</h3>
+            <div class="price"><b>1.490 €</b><span>Anzahlung 500 €</span></div>
+            <ul><li>Theorie, Hygiene, Wimpernanalyse, Mapping</li><li>1:1- und Volumentechnik an echten Modellen</li><li>Auffüllen, Ablösen, Fehler vermeiden</li></ul>
+            <a class="btn" href="https://wa.me/4917621118978?text=Hallo%20Duygu%2C%20ich%20interessiere%20mich%20f%C3%BCr%20die%20Wimpern-Schulung." target="_blank" rel="noopener">Platz anfragen</a>
+          </div>
+        </article>
+        <article class="course">
+          <div class="pics"><img src="lift1.jpg" alt="Korean Lashlifting Behandlung"><img src="lift2.jpg" alt="Ergebnis Lashlifting"></div>
+          <div class="body">
+            <span class="tag">Einstieg</span>
+            <h3>Korean Lashlifting</h3>
+            <div class="price"><b>990 €</b><span>Anzahlung 300 €</span></div>
+            <ul><li>Die Trend-Technik für schwungvolle, lange Wimpern</li><li>Produktkunde und richtige Pad-Wahl</li><li>Wenig Material, kurze Behandlungszeit</li></ul>
+            <a class="btn" href="https://wa.me/4917621118978?text=Hallo%20Duygu%2C%20ich%20interessiere%20mich%20f%C3%BCr%20die%20Korean-Lashlifting-Schulung." target="_blank" rel="noopener">Platz anfragen</a>
+          </div>
+        </article>
+        <article class="course noimg">
+          <div class="body">
+            <span class="tag">Hautästhetik</span>
+            <h3>Aquafacial</h3>
+            <div class="price"><b>1.290 €</b><span>Anzahlung 400 €</span></div>
+            <ul><li>Hautbild erkennen und Behandlung planen</li><li>Ablauf, Geräteanwendung, Hygiene</li><li>Kundinnen für regelmäßige Termine gewinnen</li></ul>
+            <a class="btn" href="https://wa.me/4917621118978?text=Hallo%20Duygu%2C%20ich%20interessiere%20mich%20f%C3%BCr%20die%20Aquafacial-Schulung." target="_blank" rel="noopener">Platz anfragen</a>
+          </div>
+        </article>
+        <article class="course noimg">
+          <div class="body">
+            <span class="tag">Trend</span>
+            <h3>Head Spa</h3>
+            <div class="price"><b>1.490 €</b><span>Anzahlung 500 €</span></div>
+            <ul><li>Kopfhautanalyse und Reinigung</li><li>Massagetechniken, Masken, Dampf</li><li>Aus der Behandlung ein Erlebnis machen</li></ul>
+            <a class="btn" href="https://wa.me/4917621118978?text=Hallo%20Duygu%2C%20ich%20interessiere%20mich%20f%C3%BCr%20die%20Head-Spa-Schulung." target="_blank" rel="noopener">Platz anfragen</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="sec-head"><h2>So läuft die Anmeldung ab</h2></div>
+      <ol class="steps">
+        <li><div><b>Kostenloses Erstgespräch</b><span>Schreib mir per WhatsApp oder Instagram. Wir klären, welche Schulung zu dir passt.</span></div></li>
+        <li><div><b>Termin wählen</b><span>Ich schicke dir die nächsten freien Daten. Pro Kurs gibt es nur zwei Plätze.</span></div></li>
+        <li><div><b>Platz sichern</b><span>Mit der Anzahlung ist dein Platz fest. Den Rest zahlst du bis zum Kurs, gern in Raten.</span></div></li>
+        <li><div><b>Zwei Tage Academy</b><span>Danach startest du durch, und ich bleibe an deiner Seite.</span></div></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="about">
+    <div class="wrap">
+      <p class="quote">„Ich bilde meine eigene Konkurrenz aus. Und ich mach das gern.“</p>
+      <div>
+        <div class="eyebrow">Deine Trainerin</div>
+        <h2 style="margin:6px 0 14px">Duygu Özyavuz</h2>
+        <p>Seit 2015 im Beauty-Business, seit 2018 mit eigenem Studio in Gaggenau. Mein Schwerpunkt ist Hautästhetik mit Aquafacial, Bio-Microneedling und KI-Hautanalyse, dazu Wimpern und Head Spa.</p>
+        <p>Ich sehe jede Woche Kundinnen, die nach schlechten Schulungen woanders behandelt wurden. Deshalb unterrichte ich so, wie ich selbst gern gelernt hätte: klein, ehrlich und praxisnah.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="sec-head"><h2>Häufig gestellte Fragen</h2></div>
+      <details><summary>Brauche ich Vorkenntnisse?</summary><p>Nein. Wimpern, Korean Lashlifting und Head Spa gehen auch für Neueinsteigerinnen. Bei Aquafacial helfen Grundkenntnisse in Kosmetik.</p></details>
+      <details><summary>Wo findet die Schulung statt?</summary><p>In meinem Studio Duygu Beauty, Hauptstraße 22, 76571 Gaggenau.</p></details>
+      <details><summary>Bekomme ich ein Starter-Set?</summary><p>Ja. Bei jeder Schulung ist ein Starter-Set und ein ausführliches Schulungsskript inklusive, damit du direkt loslegen kannst.</p></details>
+      <details><summary>Gibt es ein Zertifikat?</summary><p>Ja, du bekommst ein Zertifikat der Duygu Beauty Academy über deine Teilnahme und die praktische Ausbildung. Es ist kein staatlich anerkannter Abschluss.</p></details>
+      <details><summary>Wie läuft die Anmeldung ab?</summary><p>Du meldest dich für ein kostenloses Erstgespräch, wir wählen deinen Termin und du sicherst deinen Platz mit der Anzahlung. Den Rest zahlst du bis zum Kurs, auch in Raten über PayPal oder Klarna.</p></details>
+      <details><summary>Gibt es Unterstützung nach der Schulung?</summary><p>Ja, lebenslang. Du kannst mir Fragen und Fotos schicken, auch noch Jahre später.</p></details>
+    </div>
+  </section>
+
+  <section class="final">
+    <div class="wrap">
+      <div class="box">
+        <h2>Bist du bereit, deine Beauty-Karriere zu starten?</h2>
+        <p>Warte nicht länger und sichere dir deinen Platz in meiner Academy. Pro Kurs gibt es nur zwei Plätze.</p>
+        <div class="ctas" style="justify-content:center">
+          <a class="btn" href="https://wa.me/4917621118978?text=Hallo%20Duygu%2C%20ich%20m%C3%B6chte%20ein%20kostenloses%20Erstgespr%C3%A4ch%20zur%20Academy." target="_blank" rel="noopener">Kostenloses Erstgespräch</a>
+          <a class="btn light" href="https://ig.me/m/duyguoezyavuz" target="_blank" rel="noopener">Per Instagram schreiben</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="legal" id="impressum">
+  <div class="wrap">
+    <h2>Rechtliches</h2>
+    <h3>Impressum · Angaben gemäß § 5 TMG</h3>
+    <p>Alper Özyavuz<br>Duygu Beauty<br>Hauptstraße 22<br>76571 Gaggenau</p>
+    <p style="margin-top:10px">Telefon: 0176 21118978<br>E-Mail: <a href="mailto:duygu.beauty1@web.de">duygu.beauty1@web.de</a></p>
+    <details class="legal-details" id="datenschutz">
+      <summary>Datenschutzerklärung</summary>
+      <div class="legal-text">
+        <p>Duygu Beauty – Inhaber Alper Özyavuz · Stand: November 2026</p>
+        <h3>1. Verantwortlicher</h3>
+        <p>Duygu Beauty, Inhaber: Alper Özyavuz, Hauptstraße 22, 76571 Gaggenau, Deutschland<br>Telefon: 0176 21118978 · E-Mail: duygu.beauty1@web.de</p>
+        <h3>2. Allgemeine Hinweise</h3>
+        <p>Der Schutz deiner persönlichen Daten ist uns wichtig. Wir verarbeiten personenbezogene Daten ausschließlich im Rahmen der geltenden Datenschutzgesetze, insbesondere der Datenschutz-Grundverordnung (DSGVO). Personenbezogene Daten sind alle Informationen, mit denen du persönlich identifiziert werden kannst.</p>
+        <h3>3. Hosting dieser Website</h3>
+        <p>Diese Website wird bei GitHub Pages (GitHub, Inc.) gehostet. Beim Aufruf der Seite verarbeitet der Hoster technisch notwendige Daten wie IP-Adresse, Datum und Uhrzeit des Zugriffs und Browserinformationen, um die Seite auszuliefern und die Sicherheit zu gewährleisten (Art. 6 Abs. 1 lit. f DSGVO). Diese Website setzt keine Cookies und verwendet keine Analyse- oder Trackingdienste. Schriftarten werden lokal von dieser Website geladen, nicht von Servern Dritter.</p>
+        <h3>4. Welche Daten wir verarbeiten</h3>
+        <p>Im Rahmen unserer Geschäftstätigkeit können insbesondere verarbeitet werden: Vor- und Nachname, Telefonnummer und E-Mail-Adresse, Termin- und Buchungsinformationen, Angaben zu gebuchten Behandlungen und Schulungen, Zahlungs- und Anzahlungsinformationen, hautbezogene Angaben und Informationen zu Unverträglichkeiten (soweit für die Behandlung erforderlich), Kundenfotos und Hautanalyseberichte sowie Kommunikationsinhalte aus E-Mail und WhatsApp.</p>
+        <h3>5. Kontakt über WhatsApp, Instagram und E-Mail</h3>
+        <p>Die Buttons auf dieser Website verlinken zu WhatsApp und Instagram. Erst wenn du einen Button antippst, wirst du zum jeweiligen Dienst weitergeleitet; dort gelten dessen Datenschutzbestimmungen. Wenn du uns per WhatsApp, Instagram oder E-Mail kontaktierst, verarbeiten wir die übermittelten Informationen zur Bearbeitung deiner Anfrage und zur Kommunikation mit dir (Art. 6 Abs. 1 lit. b oder lit. f DSGVO bzw. Einwilligung, soweit erforderlich). Bitte übermittle über WhatsApp möglichst keine sensiblen Gesundheitsdaten.</p>
+        <h3>6. Terminbuchungen über Planity</h3>
+        <p>Für die Online-Terminbuchung im Studio nutzen wir Planity. Bei einer Buchung werden insbesondere Kontaktdaten, Terminwünsche und gebuchte Dienstleistungen verarbeitet (Art. 6 Abs. 1 lit. b DSGVO). Ergänzend gelten die Datenschutzinformationen von Planity: <a href="https://www.planity.com/de-DE/privacy-policy" target="_blank" rel="noopener">planity.com/de-DE/privacy-policy</a>.</p>
+        <h3>7. KI-gestützte Hautanalyse mit Genesys Vision</h3>
+        <p>In unserem Studio verwenden wir ein technisches System zur Unterstützung der Hautanalyse. Dabei können Kundenfotos und Hautanalyseberichte erstellt und gespeichert werden, zur Durchführung und Dokumentation der gewünschten Hautanalyse und zur individuellen Beratung. Soweit hierfür eine Einwilligung erforderlich ist, erfolgt die Verarbeitung erst nach entsprechender Information und Einwilligung. Kundenfotos und Analyseberichte werden nicht ohne entsprechende Rechtsgrundlage für Werbung oder Veröffentlichungen verwendet.</p>
+        <h3>8. Anzahlungen und Zahlungsabwicklung</h3>
+        <p>Für Anzahlungen und Zahlungen (z. B. über Planity, PayPal oder Klarna) werden die erforderlichen Zahlungs- und Buchungsdaten zur Abwicklung und Zuordnung verarbeitet. Es gelten ergänzend die Datenschutzinformationen der jeweiligen Zahlungsdienstleister.</p>
+        <h3>9. Speicherdauer</h3>
+        <p>Wir speichern personenbezogene Daten nur so lange, wie dies für den jeweiligen Zweck erforderlich ist oder gesetzliche Aufbewahrungspflichten bestehen. Danach werden die Daten gelöscht.</p>
+        <h3>10. Weitergabe von Daten</h3>
+        <p>Eine Weitergabe erfolgt nur, soweit dies zur Durchführung unserer Dienstleistungen erforderlich ist, eine gesetzliche Verpflichtung besteht oder eine andere Rechtsgrundlage vorliegt. Mögliche Empfänger sind insbesondere Buchungs-, Kommunikations-, Hosting- und Zahlungsdienstleister.</p>
+        <h3>11. Deine Rechte</h3>
+        <p>Du hast das Recht auf Auskunft, Berichtigung, Löschung, Einschränkung der Verarbeitung, Datenübertragbarkeit, Widerspruch sowie auf Widerruf einer erteilten Einwilligung mit Wirkung für die Zukunft. Wende dich dafür jederzeit an duygu.beauty1@web.de.</p>
+        <h3>12. Beschwerderecht</h3>
+        <p>Du hast das Recht, dich bei einer zuständigen Datenschutzaufsichtsbehörde zu beschweren.</p>
+        <h3>13. Änderungen</h3>
+        <p>Wir behalten uns vor, diese Datenschutzerklärung anzupassen, wenn sich unsere Datenverarbeitungen oder die rechtlichen Anforderungen ändern.</p>
+      </div>
+    </details>
+    <p style="margin-top:28px;font-size:13px">© Duygu Beauty Academy · Gaggenau</p>
+  </div>
+</footer>
+
+</body>
+</html>
