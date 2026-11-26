@@ -56,6 +56,9 @@ textarea{min-height:70px}
 .bar{height:6px;border-radius:99px;background:var(--blush);overflow:hidden}
 .bar span{display:block;height:100%}
 .r-area p{font-size:13px;color:var(--muted);margin:0}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{font-size:13px;font-weight:700;padding:7px 12px;border-radius:999px;color:#fff;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+.chip.b{background:var(--bad)}.chip.m{background:var(--mid)}.chip.g{background:var(--good);font-weight:600}
 .reco{background:var(--ink);color:#fff;border-radius:16px;padding:24px;display:grid;gap:10px}
 .reco .eyebrow{color:var(--rose-soft);font-size:12px;letter-spacing:.15em;text-transform:uppercase;font-weight:700}
 .reco h3{font-size:26px;color:#fff}
@@ -122,11 +125,12 @@ textarea{min-height:70px}
     <h2 id="r-hello">Dein persönlicher Haut-Report</h2>
     <p id="r-sub"></p>
   </div>
-  <section>
-    <h3 style="font-size:22px;margin-bottom:12px">Das zeigt deine Analyse</h3>
-    <div class="r-areas" id="r-areas"></div>
-  </section>
   <section class="reco" id="r-reco"></section>
+  <section>
+    <h3 style="font-size:20px;margin-bottom:10px">Darauf konzentrieren wir uns</h3>
+    <div class="chips" id="r-areas"></div>
+    <p class="fine" style="margin-top:8px">Alle Messwerte und Bilder findest du in deiner Genesys-Analyse (QR-Code).</p>
+  </section>
   <section>
     <h3 style="font-size:20px;margin-bottom:10px">Weitere passende Optionen</h3>
     <div class="alt" id="r-alt"></div>
@@ -205,16 +209,18 @@ function render(){
   var d=document.getElementById('date').value;
   document.getElementById('r-date').textContent=d?new Date(d).toLocaleDateString('de-DE',{day:'2-digit',month:'long',year:'numeric'}):'';
   document.getElementById('r-hello').textContent=name?'Dein Haut-Report, '+name:'Dein persönlicher Haut-Report';
-  document.getElementById('r-sub').textContent='Hauttyp: '+document.getElementById('typ').value+'. Hier siehst du, was die KI-Hautanalyse auf deiner Haut erkannt hat und was ich dir empfehle.';
+  document.getElementById('r-sub').textContent='Hauttyp: '+document.getElementById('typ').value+'. Auf Basis deiner KI-Hautanalyse ist das mein persönlicher Plan für dich.';
   var ra=document.getElementById('r-areas');ra.innerHTML='';
   var focus=[];
-  AREAS.forEach(function(a){
-    var l=lvl(a[0]);if(l!=='g')focus.push(a[0]);
-    var w=l==='g'?30:l==='m'?65:95,c=l==='g'?'var(--good)':l==='m'?'var(--mid)':'var(--bad)';
-    var el=document.createElement('div');el.className='r-area';
-    el.innerHTML='<div class="top"><b></b><span class="pill '+l+'">'+(l==='g'?'Gut':l==='m'?'Beobachten':'Fokus')+'</span></div><div class="bar"><span style="width:'+w+'%;background:'+c+'"></span></div><p></p>';
-    el.querySelector('b').textContent=a[1];el.querySelector('p').textContent=a[2][l];ra.appendChild(el);
+  var sorted=AREAS.slice().sort(function(x,y){return score(lvl(y[0]))-score(lvl(x[0]))});
+  sorted.forEach(function(a){
+    var l=lvl(a[0]);if(l==='g')return;focus.push(a[0]);
+    var el=document.createElement('span');el.className='chip '+l;
+    el.textContent=a[1]+(l==='b'?' · Fokus':' · beobachten');ra.appendChild(el);
   });
+  if(!focus.length){var ok=document.createElement('span');ok.className='chip g';ok.textContent='Deine Haut ist in allen Bereichen gut versorgt';ra.appendChild(ok)}
+  var good=AREAS.filter(function(a){return lvl(a[0])==='g'}).map(function(a){return a[1]});
+  if(good.length&&focus.length){var g=document.createElement('span');g.className='chip g';g.textContent='Gut: '+good.join(', ');ra.appendChild(g)}
   var k=pick(),t=T[k];
   document.getElementById('r-reco').innerHTML='<span class="eyebrow">Meine Empfehlung für dich</span><h3></h3><div class="price"></div><p></p><p style="font-size:13px;color:var(--rose-soft)">Auf Wunsch auch in Raten über PayPal oder Klarna, oder mit der VIP Beauty Card.</p>';
   var r=document.getElementById('r-reco');r.querySelector('h3').textContent=t.n;r.querySelector('.price').textContent=t.p;r.querySelector('p').textContent=t.w;
