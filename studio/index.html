@@ -134,6 +134,17 @@ section{position:relative}
 .wipe{clip-path:inset(0 100% 0 0);transition:clip-path 1.4s var(--ease)}
 .wipe.in{clip-path:inset(0 0 0 0)}
 
+/* Film */
+.film{background:var(--bg);padding:0}
+.film-frame{position:relative;height:min(100svh,860px);overflow:hidden;--s:0;clip-path:inset(calc((1 - var(--s)) * 7%) calc((1 - var(--s)) * 9%) round calc((1 - var(--s)) * 28px))}
+.film-frame video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale(calc(1.18 - var(--s) * .18))}
+.film-shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(18,18,17,.35),rgba(18,18,17,.05) 35%,rgba(18,18,17,.85))}
+.film-copy{position:absolute;left:0;right:0;bottom:0;padding:0 max(20px,calc((100% - 1120px)/2)) clamp(40px,7vw,90px);opacity:var(--s);transform:translateY(calc((1 - var(--s)) * 40px))}
+.film-copy h2{font-size:clamp(64px,11vw,160px);margin-top:14px}
+.film-toggle{position:absolute;right:max(20px,calc((100% - 1120px)/2));bottom:clamp(40px,7vw,90px);width:48px;height:48px;border-radius:50%;border:1px solid rgba(255,255,255,.4);background:rgba(18,18,17,.4);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);color:#fff;cursor:pointer;display:grid;place-items:center;opacity:var(--s)}
+.film-toggle svg{width:18px;height:18px;fill:currentColor}
+@media (max-width:900px){.film-frame{height:72svh}}
+
 /* About */
 .about .wrap{display:grid;grid-template-columns:.85fr 1.15fr;gap:90px;align-items:center}
 .about .pic{position:relative;aspect-ratio:4/5;max-width:440px;overflow:hidden}
@@ -169,6 +180,7 @@ section{position:relative}
 @media (max-width:900px){.grid-s{grid-template-columns:1fr 1fr;gap:14px}.svc h3{font-size:30px}.svc .txt{padding:16px}.svc .ic{width:32px;height:32px;right:14px;top:14px}.svc .more{grid-template-rows:1fr}.svc .more p{display:none}}
 
 /* New client */
+.band{background:linear-gradient(90deg,rgba(18,18,17,.96) 35%,rgba(18,18,17,.82)),url(img/kabine.jpg) center/cover}
 .band .wrap{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
 .band h2{font-size:clamp(54px,7vw,92px);margin:16px 0 24px}
 .band p{color:var(--muted)}
@@ -318,7 +330,7 @@ footer.site a:hover{color:var(--pink)}
       </div>
     </div>
     <div class="photo" id="photo">
-      <div class="img"><img src="../duygu.jpg" alt="Duygu Özyavuz, Inhaberin von Duygu Beauty in Gaggenau" width="900" height="998"></div>
+      <div class="img"><img src="img/duygu-suskin.jpg" alt="Duygu Özyavuz mit SU SKIN Bio-Microneedling Ampullen" width="1000" height="1339"></div>
       <div class="rating"><b>4,9 ★</b><span>45 Google-Bewertungen</span></div>
     </div>
   </div>
@@ -329,6 +341,18 @@ footer.site a:hover{color:var(--pink)}
   <div class="row" data-speed="-0.35"><span>SU SKIN · </span><span class="f">KI-Hautanalyse · </span><span>Aquafacial · </span><span>Head Spa · </span><span class="f">Signature Ritual · </span><span>Wimpern · </span><span>SU SKIN · </span><span class="f">KI-Hautanalyse · </span></div>
   <div class="row r2" data-speed="0.35"><span>Premium Beauty · </span><span class="f">Echte Ergebnisse · </span><span>Gaggenau · </span><span>Premium Beauty · </span><span class="f">Echte Ergebnisse · </span><span>Gaggenau · </span></div>
 </div>
+
+<section class="film" id="film" aria-label="Imagefilm">
+  <div class="film-frame" id="filmFrame">
+    <video id="filmVid" muted loop playsinline preload="metadata" poster="video/imagefilm-poster.jpg" aria-label="Imagefilm von Duygu Beauty"><source src="video/imagefilm.mp4" type="video/mp4"></video>
+    <div class="film-shade"></div>
+    <div class="film-copy">
+      <span class="eyebrow">Duygu Beauty · Gaggenau</span>
+      <h2>Ein Ort.<br><span class="pink">Nur für dich.</span></h2>
+    </div>
+    <button class="film-toggle" id="filmToggle" type="button" aria-label="Video pausieren"><svg viewBox="0 0 24 24" aria-hidden="true"><path id="filmIcon" d="M8 5h3v14H8zM13 5h3v14h-3z"/></svg></button>
+  </div>
+</section>
 
 <section class="about pad" id="ueber">
   <div class="wrap">
@@ -356,11 +380,11 @@ footer.site a:hover{color:var(--pink)}
     </div>
     <div class="grid-s">
       <a class="svc rv tilt" href="#buchen" data-tab="haut">
-        <div class="bg g1"></div><svg class="ic" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="20"/><circle cx="32" cy="32" r="12"/><path d="M32 6v8M32 50v8M6 32h8M50 32h8"/></svg>
+        <div class="bg"><img src="img/card-suskin.jpg" alt="" loading="lazy"></div>
         <div class="txt"><span class="num">01</span><h3>SU SKIN</h3><span class="price">ab 245 €</span><div class="more"><div><p>Bio-Microneedling mit natürlichen Spicules, die bis zu 48 Stunden weiterarbeiten.</p><em>Preise ansehen →</em></div></div></div>
       </a>
       <a class="svc rv d1 tilt" href="#buchen" data-tab="spa">
-        <div class="bg g2"></div><svg class="ic" viewBox="0 0 64 64" aria-hidden="true"><path d="M32 10c10 10 16 18 16 26a16 16 0 0 1-32 0c0-8 6-16 16-26z"/><path d="M26 38a6 6 0 0 0 6 6"/></svg>
+        <div class="bg"><img src="img/card-signature.jpg" alt="" loading="lazy"></div>
         <div class="txt"><span class="num">02</span><h3>Signature Ritual</h3><span class="price">199 €</span><div class="more"><div><p>Zwei Stunden nur für dich: Tiefenreinigung, Wirkstoffe, Maske, Massage.</p><em>Preise ansehen →</em></div></div></div>
       </a>
       <a class="svc rv d2 tilt" href="#buchen" data-tab="haut">
@@ -372,7 +396,7 @@ footer.site a:hover{color:var(--pink)}
         <div class="txt"><span class="num">04</span><h3>Head Spa</h3><span class="price">85 €</span><div class="more"><div><p>Kopfhautanalyse, Reinigung, Dampf und Massage. Abschalten ist garantiert.</p><em>Preise ansehen →</em></div></div></div>
       </a>
       <a class="svc rv d1 tilt" href="#buchen" data-tab="haut">
-        <div class="bg g5"></div><svg class="ic" viewBox="0 0 64 64" aria-hidden="true"><rect x="14" y="14" width="36" height="36" rx="4"/><path d="M14 26h36M26 14v36"/><circle cx="40" cy="40" r="4"/></svg>
+        <div class="bg"><img src="img/card-analyse.jpg" alt="" loading="lazy"></div>
         <div class="txt"><span class="num">05</span><h3>KI-Hautanalyse</h3><span class="price">69 €</span><div class="more"><div><p>Feuchtigkeit, Poren, Pigmente, Falten, UV-Schäden – mit persönlichem Haut-Report.</p><em>Preise ansehen →</em></div></div></div>
       </a>
       <a class="svc rv d2 tilt" href="#buchen" data-tab="lash">
@@ -559,6 +583,25 @@ footer.site a:hover{color:var(--pink)}
     }
     lastY = y; ticking = false;
   }
+  var ff = document.getElementById('filmFrame');
+  function film(){
+    if (!ff) return;
+    var r = ff.getBoundingClientRect();
+    var s = reduce ? 1 : Math.max(0, Math.min(1, (innerHeight - r.top) / (innerHeight * .85)));
+    ff.style.setProperty('--s', s.toFixed(3));
+  }
+  window.addEventListener('scroll', film, {passive:true}); window.addEventListener('resize', film); film();
+  var vid = document.getElementById('filmVid'), tog = document.getElementById('filmToggle'), icon = document.getElementById('filmIcon'), userPaused = false;
+  function setIcon(){ var p = vid.paused; icon.setAttribute('d', p ? 'M8 5v14l11-7z' : 'M8 5h3v14H8zM13 5h3v14h-3z'); tog.setAttribute('aria-label', p ? 'Video abspielen' : 'Video pausieren'); }
+  tog.addEventListener('click', function(){ if (vid.paused){ userPaused = false; vid.play(); } else { userPaused = true; vid.pause(); } });
+  vid.addEventListener('play', setIcon); vid.addEventListener('pause', setIcon);
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(function(en){ en.forEach(function(e){
+      if (e.isIntersecting && !reduce && !userPaused) { var pr = vid.play(); if (pr && pr.catch) pr.catch(function(){}); }
+      else if (!e.isIntersecting) vid.pause();
+    }); }, {threshold:.25}).observe(vid);
+  }
+  setIcon();
   window.addEventListener('scroll', function(){ if (!ticking){ ticking = true; requestAnimationFrame(frame); } }, {passive:true});
   frame();
 
