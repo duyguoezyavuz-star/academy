@@ -231,8 +231,9 @@ section{position:relative}
 
 /* Booking */
 .book .card{background:var(--bg-3);border:1px solid var(--line);padding:clamp(24px,4vw,56px)}
-.tabs{display:flex;gap:0;flex-wrap:wrap;justify-content:center;margin-bottom:30px;border-bottom:1px solid var(--line)}
-.tabs button{position:relative;font-family:var(--body);font-weight:600;font-size:12px;letter-spacing:.2em;text-transform:uppercase;padding:14px 18px 12px;border:0;background:transparent;color:var(--muted);cursor:pointer;transition:color .3s}
+.tabs{display:flex;gap:0;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;justify-content:safe center;margin-bottom:30px;border-bottom:1px solid var(--line)}
+.tabs::-webkit-scrollbar{display:none}
+.tabs button{flex:none;white-space:nowrap;position:relative;font-family:var(--body);font-weight:600;font-size:12px;letter-spacing:.2em;text-transform:uppercase;padding:14px 18px 12px;border:0;background:transparent;color:var(--muted);cursor:pointer;transition:color .3s}
 .tabs button::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:2px;background:var(--pink);transform:scaleX(0);transition:transform .5s var(--ease)}
 .tabs button[aria-selected="true"]{color:var(--text)}
 .tabs button[aria-selected="true"]::after{transform:none}
@@ -245,8 +246,11 @@ section{position:relative}
 .row:last-child{border-bottom:0}
 .row b{font-family:var(--display);font-weight:400;font-size:30px;letter-spacing:.02em;display:block;line-height:1}
 .row small{display:block;color:var(--muted);font-size:14px;margin-top:4px}
-.row .p{font-family:var(--display);font-size:34px;white-space:nowrap;color:var(--pink)}
-@media (max-width:600px){.row{grid-template-columns:1fr auto}.row .btn{grid-column:1/-1;justify-self:start}}
+.row .p{font-family:var(--display);font-size:30px;text-align:right;white-space:nowrap;color:var(--pink)}
+@media (max-width:600px){.row{grid-template-columns:1fr auto;gap:14px;padding:16px 2px}.row .btn{display:none}.row b{font-size:24px}.row .p{font-size:24px}
+  .tabs{-webkit-mask:linear-gradient(90deg,transparent,#000 18px,#000 calc(100% - 28px),transparent);mask:linear-gradient(90deg,transparent,#000 18px,#000 calc(100% - 28px),transparent)}}
+.card-cta{text-align:center;margin-top:30px}
+@media (min-width:601px){.card-cta{display:none}}
 
 /* Academy */
 .acad .wrap{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:center}
@@ -379,15 +383,15 @@ footer.site a:hover{color:var(--pink)}
       <p class="rv d2">Jede Hautbehandlung beginnt mit einem Blick auf deine Haut. So weißt du vorher, was dich erwartet.</p>
     </div>
     <div class="grid-s">
-      <a class="svc rv tilt" href="#buchen" data-tab="haut">
+      <a class="svc rv tilt" href="#buchen" data-tab="suskin">
         <div class="bg"><img src="img/card-suskin.jpg" alt="" loading="lazy"></div>
         <div class="txt"><span class="num">01</span><h3>SU SKIN</h3><span class="price">ab 245 €</span><div class="more"><div><p>Bio-Microneedling mit natürlichen Spicules, die bis zu 48 Stunden weiterarbeiten.</p><em>Preise ansehen →</em></div></div></div>
       </a>
-      <a class="svc rv d1 tilt" href="#buchen" data-tab="spa">
+      <a class="svc rv d1 tilt" href="#buchen" data-tab="gesicht">
         <div class="bg"><img src="img/card-signature.jpg" alt="" loading="lazy"></div>
         <div class="txt"><span class="num">02</span><h3>Signature Ritual</h3><span class="price">199 €</span><div class="more"><div><p>Zwei Stunden nur für dich: Tiefenreinigung, Wirkstoffe, Maske, Massage.</p><em>Preise ansehen →</em></div></div></div>
       </a>
-      <a class="svc rv d2 tilt" href="#buchen" data-tab="haut">
+      <a class="svc rv d2 tilt" href="#buchen" data-tab="gesicht">
         <div class="bg"><img src="img/card-aqua.jpg" alt="" loading="lazy"></div>
         <div class="txt"><span class="num">03</span><h3>Aquafacial</h3><span class="price">119 €</span><div class="more"><div><p>Tiefenreinigung, sanftes Peeling und Feuchtigkeit für sofort klarere Haut.</p><em>Preise ansehen →</em></div></div></div>
       </a>
@@ -395,7 +399,7 @@ footer.site a:hover{color:var(--pink)}
         <div class="bg"><img src="img/card-headspa.jpg" alt="" loading="lazy"></div>
         <div class="txt"><span class="num">04</span><h3>Head Spa</h3><span class="price">85 €</span><div class="more"><div><p>Kopfhautanalyse, Reinigung, Dampf und Massage. Abschalten ist garantiert.</p><em>Preise ansehen →</em></div></div></div>
       </a>
-      <a class="svc rv d1 tilt" href="#buchen" data-tab="haut">
+      <a class="svc rv d1 tilt" href="#buchen" data-tab="gesicht">
         <div class="bg"><img src="img/card-analyse.jpg" alt="" loading="lazy"></div>
         <div class="txt"><span class="num">05</span><h3>KI-Hautanalyse</h3><span class="price">69 €</span><div class="more"><div><p>Feuchtigkeit, Poren, Pigmente, Falten, UV-Schäden – mit persönlichem Haut-Report.</p><em>Preise ansehen →</em></div></div></div>
       </a>
@@ -469,34 +473,85 @@ footer.site a:hover{color:var(--pink)}
     </div>
     <div class="card rv">
       <div class="tabs" role="tablist">
-        <button role="tab" aria-selected="true" data-t="haut">Haut</button>
-        <button role="tab" aria-selected="false" data-t="spa">Spa &amp; Rituale</button>
-        <button role="tab" aria-selected="false" data-t="lash">Wimpern &amp; Brauen</button>
-        <button role="tab" aria-selected="false" data-t="kur">Kuren</button>
+        <button role="tab" aria-selected="true" data-t="suskin">SU SKIN</button>
+        <button role="tab" aria-selected="false" data-t="gesicht">Gesicht</button>
+        <button role="tab" aria-selected="false" data-t="spa">Head Spa</button>
+        <button role="tab" aria-selected="false" data-t="lash">Wimpern</button>
+        <button role="tab" aria-selected="false" data-t="brow">Brauen</button>
+        <button role="tab" aria-selected="false" data-t="style">Make-up &amp; Hair</button>
+        <button role="tab" aria-selected="false" data-t="hand">Hand &amp; Fuß</button>
+        <button role="tab" aria-selected="false" data-t="paket">Pakete</button>
       </div>
-      <div class="rows on" data-p="haut">
-        <div class="row"><div><b>KI-Hautanalyse</b><small>mit persönlichem Haut-Report</small></div><span class="p">69 €</span><a class="btn sm ghost" href="https://www.planity.com/de-DE/duygu-beauty-76571-gaggenau" target="_blank" rel="noopener">Buchen</a></div>
-        <div class="row"><div><b>SU SKIN Bio-Microneedling</b><small>Einzelsitzung</small></div><span class="p">245 €</span><a class="btn sm ghost" href="https://www.planity.com/de-DE/duygu-beauty-76571-gaggenau" target="_blank" rel="noopener">Buchen</a></div>
-        <div class="row"><div><b>Aquafacial</b><small>Glass Skin Aquafacial</small></div><span class="p">119 €</span><a class="btn sm ghost" href="https://www.planity.com/de-DE/duygu-beauty-76571-gaggenau" target="_blank" rel="noopener">Buchen</a></div>
-        <div class="row"><div><b>Golden Needle Glow</b><small>inkl. KI-Hautanalyse</small></div><span class="p">139 €</span><a class="btn sm ghost" href="https://www.planity.com/de-DE/duygu-beauty-76571-gaggenau" target="_blank" rel="noopener">Buchen</a></div>
-        <div class="row"><div><b>Gesichtsbehandlungen</b><small>individuell nach Hautanalyse</small></div><span class="p">ab 75 €</span><a class="btn sm ghost" href="https://www.planity.com/de-DE/duygu-beauty-76571-gaggenau" target="_blank" rel="noopener">Buchen</a></div>
+      <div class="rows on" data-p="suskin">
+        <div class="row"><div><b>SU SKIN Erstbehandlung</b><small>Bio-Microneedling · 1:30 Std.</small></div><span class="p">245 €</span><a class="btn sm ghost" href="https://www.planity.com/de-DE/duygu-beauty-76571-gaggenau" target="_blank" rel="noopener">Buchen</a></div>
+        <div class="row"><div><b>SU SKIN Folgebehandlung</b><small>1 Std.</small></div><span class="p">195 €</span><a class="btn sm ghost" href="https://www.planity.com/de-DE/duygu-beauty-76571-gaggenau" target="_blank" rel="noopener">Buchen</a></div>
+        <div class="row"><div><b>Aqua Facial + SU SKIN Erstbehandlung</b><small>Kombi-Behandlung · 2:30 Std.</small></div><span class="p">440 €</span><a class="btn sm ghost" href="https://www.planity.com/de-DE/duygu-beauty-76571-gaggenau" target="_blank" rel="noopener">Buchen</a></div>
+        <div class="row"><div><b>Aqua Facial + SU SKIN Folgebehandlung</b><small>2 Std.</small></div><span class="p">390 €</span><a class="btn sm ghost" href="https://www.planity.com/de-DE/duygu-beauty-76571-gaggenau" target="_blank" rel="noopener">Buchen</a></div>
+        <div class="row"><div><b>SU SKIN Hals + Dekolleté</b><small>45 Min.</small></div><span class="p">196 €</span><a class="btn sm ghost" href="https://www.planity.com/de-DE/duygu-beauty-76571-gaggenau" target="_blank" rel="noopener">Buchen</a></div>
+        <div class="row"><div><b>Hals + Dekolleté Folgebehandlung</b><small>45 Min.</small></div><span class="p">146 €</span><a class="btn sm ghost" href="https://www.planity.com/de-DE/duygu-beauty-76571-gaggenau" target="_blank" rel="noopener">Buchen</a></div>
+        <div class="row"><div><b>Regenerations-Serie 4er-Kur</b><small>Ratenzahlung möglich</small></div><span class="p">830 €</span><a class="btn sm ghost" href="https://www.planity.com/de-DE/duygu-beauty-76571-gaggenau" target="_blank" rel="noopener">Buchen</a></div>
+        <div class="row"><div><b>Regenerations-Serie 6er-Kur</b><small>Ratenzahlung möglich</small></div><span class="p">2.390 €</span><a class="btn sm ghost" href="https://www.planity.com/de-DE/duygu-beauty-76571-gaggenau" target="_blank" rel="noopener">Buchen</a></div>
+      </div>
+      <div class="rows" data-p="gesicht">
+        <div class="row"><div><b>Duygu Signature Ritual</b><small>2 Std. Premium-Gesichtsbehandlung</small></div><span class="p">199 €</span><a class="btn sm ghost" href="https://www.planity.com/de-DE/duygu-beauty-76571-gaggenau" target="_blank" rel="noopener">Buchen</a></div>
+        <div class="row"><div><b>Signature Ritual + KI-Hautanalyse</b><small>ideal für den ersten Besuch</small></div><span class="p">249 €</span><a class="btn sm ghost" href="https://www.planity.com/de-DE/duygu-beauty-76571-gaggenau" target="_blank" rel="noopener">Buchen</a></div>
+        <div class="row"><div><b>Golden Needle Glow</b><small>inkl. KI-Hautanalyse · 1:30 Std.</small></div><span class="p">139 €</span><a class="btn sm ghost" href="https://www.planity.com/de-DE/duygu-beauty-76571-gaggenau" target="_blank" rel="noopener">Buchen</a></div>
+        <div class="row"><div><b>Glass Skin Aquafacial</b><small>1:30 Std.</small></div><span class="p">119 €</span><a class="btn sm ghost" href="https://www.planity.com/de-DE/duygu-beauty-76571-gaggenau" target="_blank" rel="noopener">Buchen</a></div>
+        <div class="row"><div><b>Glow Classic mit KI-Hautanalyse</b><small>2 Std.</small></div><span class="p">105 €</span><a class="btn sm ghost" href="https://www.planity.com/de-DE/duygu-beauty-76571-gaggenau" target="_blank" rel="noopener">Buchen</a></div>
+        <div class="row"><div><b>Glow Classic</b><small>1:30 Std.</small></div><span class="p">85 €</span><a class="btn sm ghost" href="https://www.planity.com/de-DE/duygu-beauty-76571-gaggenau" target="_blank" rel="noopener">Buchen</a></div>
+        <div class="row"><div><b>Glow Basic mit KI-Hautanalyse</b><small>1:30 Std.</small></div><span class="p">95 €</span><a class="btn sm ghost" href="https://www.planity.com/de-DE/duygu-beauty-76571-gaggenau" target="_blank" rel="noopener">Buchen</a></div>
+        <div class="row"><div><b>Glow Basic</b><small>1 Std.</small></div><span class="p">75 €</span><a class="btn sm ghost" href="https://www.planity.com/de-DE/duygu-beauty-76571-gaggenau" target="_blank" rel="noopener">Buchen</a></div>
+        <div class="row"><div><b>Genesys KI-Hautanalyse</b><small>mit persönlichem Haut-Report · 30 Min.</small></div><span class="p">69 €</span><a class="btn sm ghost" href="https://www.planity.com/de-DE/duygu-beauty-76571-gaggenau" target="_blank" rel="noopener">Buchen</a></div>
+        <div class="row"><div><b>SensiPeel</b><small>45 Min.</small></div><span class="p">59 €</span><a class="btn sm ghost" href="https://www.planity.com/de-DE/duygu-beauty-76571-gaggenau" target="_blank" rel="noopener">Buchen</a></div>
       </div>
       <div class="rows" data-p="spa">
-        <div class="row"><div><b>Duygu Signature Ritual</b><small>2 Stunden Premium-Gesichtsbehandlung</small></div><span class="p">199 €</span><a class="btn sm ghost" href="https://www.planity.com/de-DE/duygu-beauty-76571-gaggenau" target="_blank" rel="noopener">Buchen</a></div>
-        <div class="row"><div><b>Signature Ritual + KI-Hautanalyse</b><small>ideal für den ersten Besuch</small></div><span class="p">249 €</span><a class="btn sm ghost" href="https://www.planity.com/de-DE/duygu-beauty-76571-gaggenau" target="_blank" rel="noopener">Buchen</a></div>
-        <div class="row"><div><b>Head Spa</b><small>Kopfhautanalyse, Reinigung, Dampf, Massage</small></div><span class="p">85 €</span><a class="btn sm ghost" href="https://www.planity.com/de-DE/duygu-beauty-76571-gaggenau" target="_blank" rel="noopener">Buchen</a></div>
+        <div class="row"><div><b>Head Spa Face</b><small>Kopf + Gesicht · 1:30 Std.</small></div><span class="p">115 €</span><a class="btn sm ghost" href="https://www.planity.com/de-DE/duygu-beauty-76571-gaggenau" target="_blank" rel="noopener">Buchen</a></div>
+        <div class="row"><div><b>Head Spa Basic</b><small>1:15 Std.</small></div><span class="p">105 €</span><a class="btn sm ghost" href="https://www.planity.com/de-DE/duygu-beauty-76571-gaggenau" target="_blank" rel="noopener">Buchen</a></div>
+        <div class="row"><div><b>Head Spa</b><small>1 Std.</small></div><span class="p">85 €</span><a class="btn sm ghost" href="https://www.planity.com/de-DE/duygu-beauty-76571-gaggenau" target="_blank" rel="noopener">Buchen</a></div>
       </div>
       <div class="rows" data-p="lash">
-        <div class="row"><div><b>Wimpernverlängerung</b><small>1:1- und Volumentechnik</small></div><span class="p">ab 109 €</span><a class="btn sm ghost" href="https://www.planity.com/de-DE/duygu-beauty-76571-gaggenau" target="_blank" rel="noopener">Buchen</a></div>
-        <div class="row"><div><b>Korean Lash Lifting</b><small>hält bis zu 8 Wochen</small></div><span class="p">75 €</span><a class="btn sm ghost" href="https://www.planity.com/de-DE/duygu-beauty-76571-gaggenau" target="_blank" rel="noopener">Buchen</a></div>
-        <div class="row"><div><b>Augenbrauenlifting</b><small>inklusive Färben</small></div><span class="p">57 €</span><a class="btn sm ghost" href="https://www.planity.com/de-DE/duygu-beauty-76571-gaggenau" target="_blank" rel="noopener">Buchen</a></div>
-        <div class="row"><div><b>Microblading</b><small>inklusive Nachbehandlung</small></div><span class="p">399 €</span><a class="btn sm ghost" href="https://www.planity.com/de-DE/duygu-beauty-76571-gaggenau" target="_blank" rel="noopener">Buchen</a></div>
+        <div class="row"><div><b>Neuauflage Volumentechnik</b><small>2 Std.</small></div><span class="p">139 €</span><a class="btn sm ghost" href="https://www.planity.com/de-DE/duygu-beauty-76571-gaggenau" target="_blank" rel="noopener">Buchen</a></div>
+        <div class="row"><div><b>Auffüllen Volumen</b><small>nach 2 / 3 / 4 Wochen</small></div><span class="p">52 / 62 / 72 €</span><a class="btn sm ghost" href="https://www.planity.com/de-DE/duygu-beauty-76571-gaggenau" target="_blank" rel="noopener">Buchen</a></div>
+        <div class="row"><div><b>Neuauflage 1:1</b><small>2 Std.</small></div><span class="p">109 €</span><a class="btn sm ghost" href="https://www.planity.com/de-DE/duygu-beauty-76571-gaggenau" target="_blank" rel="noopener">Buchen</a></div>
+        <div class="row"><div><b>Auffüllen 1:1</b><small>nach 2 / 3 / 4 Wochen</small></div><span class="p">42 / 52 / 62 €</span><a class="btn sm ghost" href="https://www.planity.com/de-DE/duygu-beauty-76571-gaggenau" target="_blank" rel="noopener">Buchen</a></div>
+        <div class="row"><div><b>Korean Lash Lifting</b><small>hält bis zu 8 Wochen · 1:15 Std.</small></div><span class="p">75 €</span><a class="btn sm ghost" href="https://www.planity.com/de-DE/duygu-beauty-76571-gaggenau" target="_blank" rel="noopener">Buchen</a></div>
+        <div class="row"><div><b>Wimpernlifting</b><small>inkl. Färben · 1 Std.</small></div><span class="p">59 €</span><a class="btn sm ghost" href="https://www.planity.com/de-DE/duygu-beauty-76571-gaggenau" target="_blank" rel="noopener">Buchen</a></div>
+        <div class="row"><div><b>Wimpern entfernen</b><small>30 Min.</small></div><span class="p">25 €</span><a class="btn sm ghost" href="https://www.planity.com/de-DE/duygu-beauty-76571-gaggenau" target="_blank" rel="noopener">Buchen</a></div>
+        <div class="row"><div><b>Wimpern färben</b><small>30 Min.</small></div><span class="p">18 €</span><a class="btn sm ghost" href="https://www.planity.com/de-DE/duygu-beauty-76571-gaggenau" target="_blank" rel="noopener">Buchen</a></div>
       </div>
-      <div class="rows" data-p="kur">
-        <div class="row"><div><b>SU SKIN Regenerations-Kur</b><small>4 Sitzungen · Ratenzahlung möglich</small></div><span class="p">830 €</span><a class="btn sm ghost" href="https://www.planity.com/de-DE/duygu-beauty-76571-gaggenau" target="_blank" rel="noopener">Buchen</a></div>
-        <div class="row"><div><b>SU SKIN Regenerations-Kur</b><small>6 Sitzungen · Ratenzahlung möglich</small></div><span class="p">2.390 €</span><a class="btn sm ghost" href="https://www.planity.com/de-DE/duygu-beauty-76571-gaggenau" target="_blank" rel="noopener">Buchen</a></div>
-        <div class="row"><div><b>Aqua Facial + SU SKIN</b><small>Kombi-Behandlung</small></div><span class="p">440 €</span><a class="btn sm ghost" href="https://www.planity.com/de-DE/duygu-beauty-76571-gaggenau" target="_blank" rel="noopener">Buchen</a></div>
+      <div class="rows" data-p="brow">
+        <div class="row"><div><b>Microblading</b><small>inkl. Nachbehandlung</small></div><span class="p">399 €</span><a class="btn sm ghost" href="https://www.planity.com/de-DE/duygu-beauty-76571-gaggenau" target="_blank" rel="noopener">Buchen</a></div>
+        <div class="row"><div><b>Microblading Refresh</b><small>innerhalb von 18 Monaten</small></div><span class="p">159 €</span><a class="btn sm ghost" href="https://www.planity.com/de-DE/duygu-beauty-76571-gaggenau" target="_blank" rel="noopener">Buchen</a></div>
+        <div class="row"><div><b>Augenbrauenlifting</b><small>inkl. Färben</small></div><span class="p">57 €</span><a class="btn sm ghost" href="https://www.planity.com/de-DE/duygu-beauty-76571-gaggenau" target="_blank" rel="noopener">Buchen</a></div>
+        <div class="row"><div><b>Augenbrauen färben</b></div><span class="p">16 €</span><a class="btn sm ghost" href="https://www.planity.com/de-DE/duygu-beauty-76571-gaggenau" target="_blank" rel="noopener">Buchen</a></div>
+        <div class="row"><div><b>Augenbrauen zupfen</b></div><span class="p">15 €</span><a class="btn sm ghost" href="https://www.planity.com/de-DE/duygu-beauty-76571-gaggenau" target="_blank" rel="noopener">Buchen</a></div>
       </div>
+      <div class="rows" data-p="style">
+        <div class="row"><div><b>Braut-Hairstyling</b><small>Probe ab 50 €</small></div><span class="p">125 €</span><a class="btn sm ghost" href="https://www.planity.com/de-DE/duygu-beauty-76571-gaggenau" target="_blank" rel="noopener">Buchen</a></div>
+        <div class="row"><div><b>Braut-Make-up</b><small>Probe 50 €</small></div><span class="p">115 €</span><a class="btn sm ghost" href="https://www.planity.com/de-DE/duygu-beauty-76571-gaggenau" target="_blank" rel="noopener">Buchen</a></div>
+        <div class="row"><div><b>Tages- &amp; Abend-Make-up</b></div><span class="p">85 €</span><a class="btn sm ghost" href="https://www.planity.com/de-DE/duygu-beauty-76571-gaggenau" target="_blank" rel="noopener">Buchen</a></div>
+        <div class="row"><div><b>Hochstecken</b></div><span class="p">ab 65 €</span><a class="btn sm ghost" href="https://www.planity.com/de-DE/duygu-beauty-76571-gaggenau" target="_blank" rel="noopener">Buchen</a></div>
+        <div class="row"><div><b>Föhnen / Glätten / Locken</b></div><span class="p">ab 35 €</span><a class="btn sm ghost" href="https://www.planity.com/de-DE/duygu-beauty-76571-gaggenau" target="_blank" rel="noopener">Buchen</a></div>
+      </div>
+      <div class="rows" data-p="hand">
+        <div class="row"><div><b>Pediküre Shellac</b><small>neu / refill</small></div><span class="p">57 / 59 €</span><a class="btn sm ghost" href="https://www.planity.com/de-DE/duygu-beauty-76571-gaggenau" target="_blank" rel="noopener">Buchen</a></div>
+        <div class="row"><div><b>Pediküre</b><small>ohne / mit Lack</small></div><span class="p">45 / 51 €</span><a class="btn sm ghost" href="https://www.planity.com/de-DE/duygu-beauty-76571-gaggenau" target="_blank" rel="noopener">Buchen</a></div>
+        <div class="row"><div><b>Maniküre Shellac</b><small>neu / refill</small></div><span class="p">52 / 54 €</span><a class="btn sm ghost" href="https://www.planity.com/de-DE/duygu-beauty-76571-gaggenau" target="_blank" rel="noopener">Buchen</a></div>
+        <div class="row"><div><b>Maniküre</b><small>ohne / mit Lack</small></div><span class="p">40 / 46 €</span><a class="btn sm ghost" href="https://www.planity.com/de-DE/duygu-beauty-76571-gaggenau" target="_blank" rel="noopener">Buchen</a></div>
+        <div class="row"><div><b>Waxing</b><small>Oberlippe / + Kinn / Gesicht</small></div><span class="p">13 / 18 / 25 €</span><a class="btn sm ghost" href="https://www.planity.com/de-DE/duygu-beauty-76571-gaggenau" target="_blank" rel="noopener">Buchen</a></div>
+      </div>
+      <div class="rows" data-p="paket">
+        <div class="row"><div><b>Glass Skin Aqua 12er-Kur</b><small>inkl. 3 Heimpflegeprodukte</small></div><span class="p">1.428 €</span><a class="btn sm ghost" href="https://www.planity.com/de-DE/duygu-beauty-76571-gaggenau" target="_blank" rel="noopener">Buchen</a></div>
+        <div class="row"><div><b>Feet &amp; Glow VIP-Paket</b></div><span class="p">1.224 €</span><a class="btn sm ghost" href="https://www.planity.com/de-DE/duygu-beauty-76571-gaggenau" target="_blank" rel="noopener">Buchen</a></div>
+        <div class="row"><div><b>Glow &amp; Go Paket</b><small>ganzjährig</small></div><span class="p">1.104 €</span><a class="btn sm ghost" href="https://www.planity.com/de-DE/duygu-beauty-76571-gaggenau" target="_blank" rel="noopener">Buchen</a></div>
+        <div class="row"><div><b>Lash Lover 12 Monate</b><small>Wimpern-Abo</small></div><span class="p">756 €</span><a class="btn sm ghost" href="https://www.planity.com/de-DE/duygu-beauty-76571-gaggenau" target="_blank" rel="noopener">Buchen</a></div>
+        <div class="row"><div><b>Glass Skin Aqua 6er-Kur</b><small>inkl. 3 Heimpflegeprodukte</small></div><span class="p">714 €</span><a class="btn sm ghost" href="https://www.planity.com/de-DE/duygu-beauty-76571-gaggenau" target="_blank" rel="noopener">Buchen</a></div>
+        <div class="row"><div><b>Golden Needle Glow 6er</b><small>inkl. 3 Heimpflegeprodukte</small></div><span class="p">714 €</span><a class="btn sm ghost" href="https://www.planity.com/de-DE/duygu-beauty-76571-gaggenau" target="_blank" rel="noopener">Buchen</a></div>
+        <div class="row"><div><b>VIP Beauty Card</b><small>Guthaben, auf Raten zahlbar</small></div><span class="p">600 €</span><a class="btn sm ghost" href="https://www.planity.com/de-DE/duygu-beauty-76571-gaggenau" target="_blank" rel="noopener">Buchen</a></div>
+        <div class="row"><div><b>Glow Classic 6er</b><small>inkl. 3 Heimpflegeprodukte</small></div><span class="p">474 €</span><a class="btn sm ghost" href="https://www.planity.com/de-DE/duygu-beauty-76571-gaggenau" target="_blank" rel="noopener">Buchen</a></div>
+        <div class="row"><div><b>Golden Needle Glow 3er</b></div><span class="p">330 €</span><a class="btn sm ghost" href="https://www.planity.com/de-DE/duygu-beauty-76571-gaggenau" target="_blank" rel="noopener">Buchen</a></div>
+      </div>
+      <div class="card-cta"><a class="btn" href="https://www.planity.com/de-DE/duygu-beauty-76571-gaggenau" target="_blank" rel="noopener">Auf Planity buchen <span class="arr">→</span></a></div>
     </div>
   </div>
 </section>
