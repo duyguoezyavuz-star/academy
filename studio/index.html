@@ -209,7 +209,13 @@ section{position:relative}
 .tier li{padding-left:22px;position:relative}
 .tier li::before{content:"";position:absolute;left:0;top:.55em;width:10px;height:1px;background:var(--pink)}
 .club .note{text-align:center;margin-top:50px;color:var(--muted)}
-.club .note .btn{margin-top:22px}
+.club .note .btn{margin-top:0}
+.wl-sub{margin:12px auto 26px;max-width:520px;color:#d6cfcc}
+.wl{display:grid;gap:12px;max-width:520px;margin:0 auto 16px;padding:28px!important}
+.wl input,.wl select{background:var(--bg-3);border:1px solid var(--line);color:inherit;font:inherit;padding:14px 16px;min-width:200px}
+.wl select option{background:#121211}
+.club .note small{display:block;font-size:13px}
+@media (max-width:600px){.wl input,.wl select,.wl .btn{width:100%}}
 @media (max-width:900px){.tiers{grid-template-columns:1fr;max-width:420px;margin:0 auto}}
 
 /* Reviews: crossfade quote */
@@ -433,15 +439,22 @@ footer.site a:hover{color:var(--pink)}
     <div class="head center">
       <span class="eyebrow rv">Ab Januar 2027</span>
       <h2 class="rv d1">Der Glow Club</h2>
-      <p class="rv d2">Dein fester Platz bei mir, jeden Monat. Mit KI-Hautanalyse alle 3 Monate und Vorrang bei Terminen. Nur 15 Plätze pro Stufe.</p>
+      <p class="rv d2">Dein fester Platz bei mir, jeden Monat. Mit KI-Hautanalyse alle 3 Monate und Vorrang bei Terminen. Die ersten 10 Plätze gehen an die Warteliste.</p>
     </div>
     <div class="tiers">
       <div class="tier rv"><span class="eyebrow">Stufe 1</span><h3>Glow</h3><div class="amt">119 € <small>/ Monat</small></div><ul><li>1 Aquafacial oder Head Spa</li><li>KI-Hautanalyse alle 3 Monate</li><li>Vorrang bei Terminen</li></ul></div>
       <div class="tier feat rv d1"><span class="eyebrow">Stufe 2</span><h3>Signature</h3><div class="amt">189 € <small>/ Monat</small></div><ul><li>1 Signature Ritual (2 Std.)</li><li>KI-Hautanalyse alle 3 Monate</li><li>Geburtstags-Upgrade</li></ul></div>
       <div class="tier rv d2"><span class="eyebrow">Stufe 3</span><h3>Skin</h3><div class="amt">229 € <small>/ Monat</small></div><ul><li>1 SU SKIN Bio-Microneedling</li><li>Fortschritts-Report</li><li>Persönlicher Heimpflege-Plan</li></ul></div>
     </div>
-    <div class="note rv">Mindestlaufzeit 6 Monate. Abschluss persönlich im Studio.<br>
-      <a class="btn" href="https://wa.me/4917621118978?text=Hallo%20Duygu%2C%20ich%20m%C3%B6chte%20auf%20die%20Warteliste%20f%C3%BCr%20den%20Glow%20Club." target="_blank" rel="noopener">Auf die Warteliste <span class="arr">→</span></a>
+    <div class="note rv">
+      <span class="eyebrow">Warteliste · 10 Plätze</span>
+      <p class="wl-sub">Sichere dir jetzt einen der ersten 10 Plätze. Im Januar melde ich mich persönlich bei dir.</p>
+      <form id="wl" class="wl">
+        <input name="name" required placeholder="Vorname" autocomplete="given-name" aria-label="Vorname">
+        <select name="tier" aria-label="Wunsch-Stufe"><option>Glow · 119 €</option><option selected>Signature · 189 €</option><option>Skin · 229 €</option><option>Weiß ich noch nicht</option></select>
+        <button class="btn" type="submit">Platz sichern <span class="arr">→</span></button>
+      </form>
+      <small>Mindestlaufzeit 6 Monate. Unverbindlich vormerken, Abschluss persönlich im Studio. Öffnet WhatsApp, du schickst selbst ab.</small>
     </div>
   </div>
 </section>
@@ -708,6 +721,13 @@ footer.site a:hover{color:var(--pink)}
   }
   tabs.forEach(function(b){ b.addEventListener('click', function(){ show(b.dataset.t); }); });
   document.querySelectorAll('.svc[data-tab]').forEach(function(a){ a.addEventListener('click', function(){ show(a.dataset.tab); }); });
+
+  // Glow Club waitlist
+  document.getElementById('wl').addEventListener('submit', function(e){
+    e.preventDefault();
+    var f = e.target, txt = 'Hallo Duygu, hier ist ' + f.name.value.trim() + '. Ich möchte mir einen der 10 Warteliste-Plätze im Glow Club sichern.\nWunsch-Stufe: ' + f.tier.value;
+    window.open('https://wa.me/4917621118978?text=' + encodeURIComponent(txt), '_blank', 'noopener');
+  });
 
   // WhatsApp form
   document.getElementById('form').addEventListener('submit', function(e){
