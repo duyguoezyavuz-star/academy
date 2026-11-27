@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Bewertungskarte · Duygu Beauty</title>
+<style>
+@font-face{font-family:'Bebas Neue';font-weight:400;font-display:swap;src:url(../studio/fonts/bebas-neue-latin-400-normal.woff2) format('woff2')}
+@font-face{font-family:'Josefin Sans';font-weight:300;font-display:swap;src:url(../studio/fonts/josefin-sans-latin-300-normal.woff2) format('woff2')}
+@font-face{font-family:'Josefin Sans';font-weight:400;font-display:swap;src:url(../studio/fonts/josefin-sans-latin-400-normal.woff2) format('woff2')}
+@font-face{font-family:'Josefin Sans';font-weight:600;font-display:swap;src:url(../studio/fonts/josefin-sans-latin-600-normal.woff2) format('woff2')}
+:root{--bg:#121211;--bg-3:#232120;--text:#F2EDEB;--muted:#A8A19E;--pink:#D88FA0;--line:rgba(255,255,255,.12)}
+*{box-sizing:border-box}
+html,body{margin:0;background:#2a2827;color:var(--text);font-family:"Josefin Sans",system-ui,sans-serif;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+.bar{max-width:900px;margin:0 auto;padding:28px 16px 8px;display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-content:space-between}
+.bar h1{font-family:"Bebas Neue",Impact,sans-serif;font-weight:400;font-size:34px;margin:0;letter-spacing:.02em}
+.bar p{margin:4px 0 0;color:var(--muted);font-size:14px;max-width:520px}
+.btn{font:600 13px/1 "Josefin Sans",sans-serif;letter-spacing:.2em;text-transform:uppercase;background:var(--pink);color:var(--bg);border:0;padding:16px 26px 13px;cursor:pointer;text-decoration:none}
+.sheet{width:210mm;height:297mm;margin:20px auto;background:#fff;display:grid;position:relative;overflow:hidden}
+.s4{grid-template-columns:105mm 105mm;grid-template-rows:148.5mm 148.5mm}
+.s1{place-items:center}
+.card{background:var(--bg);color:var(--text);display:flex;flex-direction:column;align-items:center;justify-content:space-between;text-align:center;padding:11mm 9mm 9mm;border:.2mm dashed #555;position:relative}
+.card::before{content:"";position:absolute;inset:5mm;border:.3mm solid rgba(216,143,160,.35);pointer-events:none}
+.logo{width:32mm;height:auto;opacity:.95}
+.eb{font-weight:300;font-size:2.6mm;letter-spacing:.42em;text-transform:uppercase;color:var(--pink);margin:0}
+.h{font-family:"Bebas Neue",Impact,sans-serif;font-weight:400;font-size:10mm;line-height:.95;margin:2.5mm 0 0;letter-spacing:.01em;text-transform:uppercase}
+.sub{font-size:3.3mm;line-height:1.45;color:#d6cfcc;margin:2.5mm 0 0;font-weight:300}
+.qr{background:var(--text);padding:3mm;width:38mm;height:38mm}
+.qr img{width:100%;height:100%;display:block}
+.steps{font-size:2.7mm;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin:0}
+.steps b{color:var(--pink);font-weight:600}
+.big{width:148mm;height:210mm;padding:16mm 14mm 14mm;border:.2mm dashed #555}
+.big::before{inset:7mm}
+.big .logo{width:50mm}
+.big .eb{font-size:3.6mm}
+.big .h{font-size:17mm}
+.big .sub{font-size:4.8mm;max-width:105mm}
+.big .qr{width:62mm;height:62mm;padding:4.5mm}
+.big .steps{font-size:3.6mm}
+.note{max-width:900px;margin:0 auto 40px;padding:0 16px;color:var(--muted);font-size:14px}
+@media screen and (max-width:860px){.sheet{transform:scale(.42);transform-origin:top center;margin:10px auto calc(-297mm * .58 + 10px)}}
+@page{size:A4;margin:0}
+@media print{html,body{background:#fff}.bar,.note{display:none}.sheet{margin:0;page-break-after:always;break-after:page}.sheet:last-child{page-break-after:auto;break-after:auto}}
+</style>
+</head>
+<body>
+<div class="bar">
+  <div>
+    <h1>Bewertungskarte für die Theke</h1>
+    <p>Seite 1: 4 Karten im A6-Format zum Ausschneiden. Seite 2: Thekenaufsteller in A5. Der QR-Code öffnet direkt dein Google-Bewertungsfenster.</p>
+  </div>
+  <button class="btn" onclick="window.print()">Drucken</button>
+</div>
+
+<template id="t">
+  <img class="logo" src="logo-dark.png" alt="Duygu Beauty">
+  <div>
+    <p class="eb">Danke für dein Vertrauen</p>
+    <h2 class="h">Hat es dir<br>gefallen?</h2>
+    <p class="sub">Deine Bewertung hilft mir mehr als jedes Werbeplakat. Es dauert nur 30 Sekunden.</p>
+  </div>
+  <div class="qr"><img src="qr.svg" alt="QR-Code zur Google-Bewertung"></div>
+  <p class="steps"><b>Scannen</b> · Sterne wählen · <b>Danke</b></p>
+</template>
+
+<section class="sheet s4" id="s4"></section>
+<section class="sheet s1"><div class="card big" id="big"></div></section>
+
+<p class="note">Tipp: Für die Theke auf festeres Papier (250 g) drucken lassen, z. B. im Copyshop. Beim Drucken „Hintergrundgrafiken“ aktivieren und Ränder auf „Keine“ stellen.</p>
+
+<script>
+var t=document.getElementById('t'), s4=document.getElementById('s4');
+for(var i=0;i<4;i++){var c=document.createElement('div');c.className='card';c.appendChild(t.content.cloneNode(true));s4.appendChild(c);}
+document.getElementById('big').appendChild(t.content.cloneNode(true));
+</script>
+</body>
+</html>
