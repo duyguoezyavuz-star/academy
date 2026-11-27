@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex">
+<title>Terminkarte · Duygu Beauty</title>
+<style>
+@font-face{font-family:'Bebas Neue';font-weight:400;src:url(../studio/fonts/bebas-neue-latin-400-normal.woff2) format('woff2')}
+@font-face{font-family:'Josefin Sans';font-weight:300;src:url(../studio/fonts/josefin-sans-latin-300-normal.woff2) format('woff2')}
+@font-face{font-family:'Josefin Sans';font-weight:400;src:url(../studio/fonts/josefin-sans-latin-400-normal.woff2) format('woff2')}
+@font-face{font-family:'Josefin Sans';font-weight:600;src:url(../studio/fonts/josefin-sans-latin-600-normal.woff2) format('woff2')}
+/* 85 x 55 mm + 3 mm Beschnitt = 91 x 61 mm, Sicherheitsabstand 6 mm */
+@page{size:91mm 61mm;margin:0}
+:root{--bg:#121211;--text:#F2EDEB;--muted:#A8A19E;--pink:#D88FA0;--pink-d:#9E5568;--paper:#F4EFEC}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;-webkit-print-color-adjust:exact;print-color-adjust:exact;background:#555}
+body{font-family:"Josefin Sans",sans-serif}
+.page{width:91mm;height:61mm;position:relative;overflow:hidden;page-break-after:always;break-after:page;margin:0 auto 6mm}
+.page:last-child{page-break-after:auto;break-after:auto}
+@media print{html,body{background:none}.page{margin:0}}
+.front{background:var(--bg);color:var(--text);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+.front::before{content:"";position:absolute;inset:6mm;border:.25mm solid rgba(216,143,160,.4)}
+.front img{width:32mm;position:relative}
+.front p{position:relative;margin:3mm 0 0;font-weight:300;font-size:2.2mm;letter-spacing:.38em;text-transform:uppercase;color:var(--pink)}
+.back{background:var(--paper);color:#1a1918;padding:6.5mm 7mm 5.5mm;display:flex;flex-direction:column}
+.back h2{font-family:"Bebas Neue",Impact,sans-serif;font-weight:400;font-size:6.2mm;letter-spacing:.02em;margin:0 0 3.4mm;color:var(--pink-d);line-height:1}
+.line{display:flex;align-items:flex-end;gap:2mm;font-size:2.5mm;letter-spacing:.14em;text-transform:uppercase;color:#6b6462;margin-bottom:4.2mm}
+.line span{flex:none;width:17mm}
+.line i{flex:1;border-bottom:.25mm solid #b9afac;height:4mm}
+.row{display:flex;gap:4mm}.row .line{flex:1}.row .line span{width:auto}
+.info{margin-top:auto;display:flex;justify-content:space-between;align-items:flex-end;gap:3mm}
+.info p{margin:0;font-size:2.25mm;line-height:1.45;color:#4a4442}
+.info p b{color:#1a1918;font-weight:600}
+.qr{width:11mm;height:11mm;flex:none}
+.qr img{width:100%;height:100%;display:block}
+</style>
+</head>
+<body>
+<section class="page front">
+  <img src="logo-dark.png" alt="Duygu Beauty">
+  <p>Premium Beauty. Echte Ergebnisse.</p>
+</section>
+<section class="page back">
+  <h2>Dein nächster Termin</h2>
+  <div class="row"><div class="line"><span>Datum</span><i></i></div><div class="line"><span>Uhrzeit</span><i></i></div></div>
+  <div class="line"><span>Behandlung</span><i></i></div>
+  <div class="info">
+    <p><b>Du kannst nicht? Bitte gib mir rechtzeitig Bescheid.</b><br>0176 21118978 · Hauptstraße 22, Gaggenau<br>Termine &amp; Gutscheine auch über Planity</p>
+    <div class="qr"><img src="qr-planity.svg" alt=""></div>
+  </div>
+</section>
+</body>
+</html>

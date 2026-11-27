@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex">
+<title>Flyer A5 · Duygu Beauty</title>
+<style>
+@font-face{font-family:'Bebas Neue';font-weight:400;src:url(../studio/fonts/bebas-neue-latin-400-normal.woff2) format('woff2')}
+@font-face{font-family:'Josefin Sans';font-weight:300;src:url(../studio/fonts/josefin-sans-latin-300-normal.woff2) format('woff2')}
+@font-face{font-family:'Josefin Sans';font-weight:400;src:url(../studio/fonts/josefin-sans-latin-400-normal.woff2) format('woff2')}
+@font-face{font-family:'Josefin Sans';font-weight:600;src:url(../studio/fonts/josefin-sans-latin-600-normal.woff2) format('woff2')}
+/* A5 + 3 mm Beschnitt = 154 x 216 mm. Sicherheitsabstand 8 mm vom Rand */
+@page{size:154mm 216mm;margin:0}
+:root{--bg:#121211;--bg-3:#232120;--text:#F2EDEB;--muted:#A8A19E;--pink:#D88FA0;--pink-l:#E8B0BE}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;-webkit-print-color-adjust:exact;print-color-adjust:exact;background:#555}
+body{font-family:"Josefin Sans",sans-serif;color:var(--text)}
+.page{width:154mm;height:216mm;position:relative;overflow:hidden;background:var(--bg);page-break-after:always;break-after:page;margin:0 auto 10mm}
+.page:last-child{page-break-after:auto;break-after:auto}
+@media print{html,body{background:none}.page{margin:0}}
+.safe{position:absolute;inset:11mm}
+.eb{font-weight:300;font-size:2.7mm;letter-spacing:.42em;text-transform:uppercase;color:var(--pink);margin:0}
+h1,h2,h3{font-family:"Bebas Neue",Impact,sans-serif;font-weight:400;text-transform:uppercase;line-height:.92;margin:0;letter-spacing:.01em}
+/* FRONT */
+.photo{position:absolute;left:0;right:0;top:0;height:150mm;background:url(duygu-blazer.jpg) center 18%/cover no-repeat}
+.photo::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(18,18,17,.35) 0%,rgba(18,18,17,0) 22%,rgba(18,18,17,.25) 48%,rgba(18,18,17,.85) 72%,#121211 92%)}
+.f-logo{position:absolute;top:10mm;left:10mm;width:27mm}
+.f-text{position:absolute;left:11mm;right:11mm;bottom:12mm;text-align:center}
+.f-text .eb{color:var(--pink-l);font-weight:400;font-size:3mm}
+.f-text h1{font-size:17mm;margin:3mm 0 3mm}
+.f-text h1 span{color:var(--pink)}
+.f-text .sub{font-size:3.9mm;font-weight:300;line-height:1.45;color:#e2dbd8;margin:0 auto 6mm;max-width:110mm}
+.f-row{display:flex;align-items:center;justify-content:center;gap:5mm}
+.qr{background:var(--text);padding:1.6mm;width:20mm;height:20mm;flex:none}
+.qr img{width:100%;height:100%;display:block}
+.f-row .cta{text-align:left;font-size:3.3mm;line-height:1.35}
+.f-row .cta b{display:block;font-family:"Bebas Neue",Impact,sans-serif;font-weight:400;font-size:7mm;letter-spacing:.02em;color:var(--pink);line-height:1}
+/* BACK */
+.back .safe{display:flex;flex-direction:column;bottom:15mm}
+.back h2{font-size:12mm;margin:2.5mm 0 5mm}
+.svc{display:grid;grid-template-columns:1fr;gap:0;border-top:.25mm solid rgba(255,255,255,.12)}
+.svc div{padding:3.1mm 0 2.8mm;border-bottom:.25mm solid rgba(255,255,255,.12)}
+.svc b{display:block;font-family:"Bebas Neue",Impact,sans-serif;font-weight:400;font-size:6.6mm;letter-spacing:.02em;line-height:1}
+.svc small{display:block;font-size:3.1mm;color:var(--muted);font-weight:300;margin-top:.8mm;line-height:1.35}
+.svc .new b::after{content:"NEU";font-family:"Josefin Sans",sans-serif;font-weight:600;font-size:2.2mm;letter-spacing:.2em;color:var(--bg);background:var(--pink);padding:.8mm 1.4mm .4mm;margin-left:2mm;vertical-align:middle}
+.foot{margin-top:auto;display:flex;gap:5mm;align-items:center;padding-top:5mm}
+.foot .qr{width:22mm;height:22mm}
+.foot p{margin:0;font-size:3.1mm;line-height:1.5;font-weight:300}
+.foot p b{font-weight:600;color:var(--pink)}
+.slogan{position:absolute;right:11mm;bottom:7mm;font-size:2.4mm;letter-spacing:.3em;text-transform:uppercase;color:var(--muted)}
+</style>
+</head>
+<body>
+<section class="page front">
+  <div class="photo"></div>
+  <img class="f-logo" src="logo-dark.png" alt="Duygu Beauty">
+  <div class="f-text">
+    <p class="eb">Hautästhetik in Gaggenau</p>
+    <h1>Deine Haut hat Probleme?<br><span>Ich regel das.</span></h1>
+    <p class="sub">Erst analysieren, dann behandeln. Mit KI-Hautanalyse, SU SKIN Bio-Microneedling und Premium-Facials, abgestimmt auf genau deine Haut.</p>
+    <div class="f-row">
+      <div class="qr"><img src="qr-planity.svg" alt=""></div>
+      <div class="cta"><b>Termin online buchen</b>QR-Code scannen oder über Planity</div>
+    </div>
+  </div>
+</section>
+
+<section class="page back">
+  <div class="safe">
+    <p class="eb">Duygu Beauty · Studio &amp; Academy</p>
+    <h2>Meine Behandlungen</h2>
+    <div class="svc">
+      <div><b>KI-Hautanalyse</b><small>Feuchtigkeit, Poren, Pigmente, Rötungen: Wir sehen, was der Spiegel nicht zeigt.</small></div>
+      <div><b>SU SKIN Bio-Microneedling</b><small>Natürliche Spicules, die bis zu 48 Stunden weiterarbeiten. Einzeln oder als Kur.</small></div>
+      <div><b>Glass Skin Aquafacial</b><small>Tiefenreinigung, sanftes Peeling und intensive Feuchtigkeit.</small></div>
+      <div><b>Duygu Signature Ritual</b><small>Zwei Stunden Premium-Gesichtsbehandlung mit Massage.</small></div>
+      <div><b>Head Spa</b><small>Kopfhautanalyse, Reinigung, Maske, Dampf und Massage.</small></div>
+      <div><b>Wimpern &amp; Brows</b><small>Extensions, Korean Lash Lifting, Brow Lifting.</small></div>
+      <div><b>Duygu Beauty Academy</b><small>2-tägige Schulungen in Wimpern, Lashlifting, Aquafacial und Head Spa. Max. 2 Teilnehmerinnen.</small></div>
+      <div class="new"><b>Glow Club</b><small>Dein fester Platz jeden Monat, mit Hautanalyse und Vorrang bei Terminen.</small></div>
+    </div>
+    <div class="foot">
+      <div class="qr"><img src="qr-planity.svg" alt=""></div>
+      <p><b>Duygu Beauty</b><br>Hauptstraße 22 · 76571 Gaggenau<br>0176 21118978 · @duyguoezyavuz<br>Gutscheine im Studio &amp; über Planity</p>
+    </div>
+  </div>
+  <span class="slogan">Premium Beauty. Echte Ergebnisse.</span>
+</section>
+</body>
+</html>
