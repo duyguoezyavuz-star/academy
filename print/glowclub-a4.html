@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex">
+<title>Glow Club A4 · Duygu Beauty</title>
+<style>
+@font-face{font-family:'Bebas Neue';font-weight:400;src:url(../studio/fonts/bebas-neue-latin-400-normal.woff2) format('woff2')}
+@font-face{font-family:'Josefin Sans';font-weight:300;src:url(../studio/fonts/josefin-sans-latin-300-normal.woff2) format('woff2')}
+@font-face{font-family:'Josefin Sans';font-weight:400;src:url(../studio/fonts/josefin-sans-latin-400-normal.woff2) format('woff2')}
+@font-face{font-family:'Josefin Sans';font-weight:600;src:url(../studio/fonts/josefin-sans-latin-600-normal.woff2) format('woff2')}
+@page{size:A4;margin:0}
+:root{--bg:#121211;--bg-3:#232120;--text:#F2EDEB;--muted:#A8A19E;--pink:#D88FA0;--pink-l:#E8B0BE}
+*{box-sizing:border-box}
+html,body{margin:0;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+body{font-family:"Josefin Sans",sans-serif;color:var(--text)}
+.page{width:210mm;height:297mm;background:var(--bg);position:relative;overflow:hidden;padding:16mm 14mm 13mm;display:flex;flex-direction:column}
+.page::before{content:"";position:absolute;inset:8mm;border:.35mm solid rgba(216,143,160,.35);pointer-events:none}
+.glow{position:absolute;width:150mm;height:150mm;border-radius:50%;background:radial-gradient(circle,rgba(216,143,160,.22),rgba(216,143,160,0) 65%);top:-40mm;right:-40mm}
+header{text-align:center;position:relative}
+header img{width:34mm}
+.eb{font-weight:300;font-size:3.4mm;letter-spacing:.42em;text-transform:uppercase;color:var(--pink);margin:6mm 0 0}
+h1{font-family:"Bebas Neue",Impact,sans-serif;font-weight:400;font-size:30mm;line-height:.9;margin:3mm 0 3mm;letter-spacing:.01em}
+.lead{font-size:4.6mm;font-weight:300;line-height:1.45;color:#e2dbd8;max-width:150mm;margin:0 auto}
+.tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:4mm;margin:10mm 0 0;position:relative}
+.tier{position:relative;background:var(--bg-3);border:.3mm solid rgba(255,255,255,.1);padding:7mm 5mm 6mm;text-align:center;display:flex;flex-direction:column}
+.tier.feat{background:linear-gradient(160deg,rgba(216,143,160,.25),var(--bg-3) 65%);border-color:rgba(216,143,160,.55)}
+.tier .st{font-weight:300;font-size:2.6mm;letter-spacing:.34em;text-transform:uppercase;color:var(--pink)}
+.tier h2{font-family:"Bebas Neue",Impact,sans-serif;font-weight:400;font-size:13mm;line-height:1;margin:2.5mm 0 1.5mm}
+.amt{font-family:"Bebas Neue",Impact,sans-serif;font-size:11mm;color:var(--pink);line-height:1}
+.amt small{display:block;font-family:"Josefin Sans",sans-serif;font-size:2.6mm;letter-spacing:.2em;color:var(--muted);margin-top:1.4mm;text-transform:uppercase}
+.tier ul{list-style:none;padding:0;margin:5mm 0 0;font-size:3.5mm;line-height:1.4;display:grid;gap:2.4mm;text-align:left}
+.tier li{padding-left:4.5mm;position:relative}
+.tier li::before{content:"";position:absolute;left:0;top:.62em;width:2.6mm;height:.3mm;background:var(--pink)}
+.badge{position:absolute;top:-3mm;left:50%;transform:translateX(-50%);white-space:nowrap;font-size:2.3mm;font-weight:600;letter-spacing:.22em;text-transform:uppercase;background:var(--pink);color:var(--bg);padding:1.2mm 2.4mm .8mm}
+.all{text-align:center;margin:8mm 0 0;font-size:3.8mm;color:#d6cfcc;font-weight:300}
+.all b{color:var(--text);font-weight:600}
+.wait{margin-top:auto;display:flex;align-items:center;gap:8mm;background:var(--text);color:var(--bg);padding:7mm 8mm;position:relative}
+.wait .qr{width:36mm;height:36mm;flex:none}
+.wait .qr img{width:100%;height:100%;display:block}
+.wait h3{font-family:"Bebas Neue",Impact,sans-serif;font-weight:400;font-size:12mm;line-height:.95;margin:0 0 2mm}
+.wait p{margin:0;font-size:3.8mm;line-height:1.45}
+.wait .small{font-size:3mm;color:#4a4442;margin-top:2mm}
+.foot{text-align:center;font-size:2.8mm;letter-spacing:.3em;text-transform:uppercase;color:var(--muted);margin-top:6mm;position:relative}
+</style>
+</head>
+<body>
+<section class="page">
+  <div class="glow"></div>
+  <header>
+    <img src="logo-dark.png" alt="Duygu Beauty">
+    <p class="eb">Neu · Ab Januar 2027</p>
+    <h1>Der Glow Club</h1>
+    <p class="lead">Dein fester Platz bei mir, jeden Monat. Deine Haut in Profi-Händen, das ganze Jahr.</p>
+  </header>
+  <div class="tiers">
+    <div class="tier"><span class="st">Stufe 1</span><h2>Glow</h2><div class="amt">119 €<small>pro Monat</small></div>
+      <ul><li>1 Aquafacial oder Head Spa im Monat</li><li>KI-Hautanalyse alle 3 Monate</li><li>Vorrang bei Terminen</li></ul></div>
+    <div class="tier feat"><span class="badge">Mein Tipp</span><span class="st">Stufe 2</span><h2>Signature</h2><div class="amt">189 €<small>pro Monat</small></div>
+      <ul><li>1 Signature Ritual (2 Std.) im Monat</li><li>KI-Hautanalyse alle 3 Monate</li><li>Geburtstags-Upgrade</li></ul></div>
+    <div class="tier"><span class="st">Stufe 3</span><h2>Skin</h2><div class="amt">229 €<small>pro Monat</small></div>
+      <ul><li>1 SU SKIN Bio-Microneedling im Monat</li><li>Fortschritts-Report</li><li>Persönlicher Heimpflege-Plan</li></ul></div>
+  </div>
+  <p class="all"><b>Mindestlaufzeit 6 Monate.</b> Abschluss persönlich im Studio.</p>
+  <div class="wait">
+    <div class="qr"><img src="qr-club.svg" alt="QR-Code Warteliste"></div>
+    <div>
+      <h3>Die ersten 10 Plätze<br>gehen an die Warteliste</h3>
+      <p>QR-Code scannen und Platz sichern. Oder frag mich einfach direkt, ich trag dich ein.</p>
+      <p class="small">Unverbindlich vormerken. Im Januar melde ich mich persönlich bei dir.</p>
+    </div>
+  </div>
+  <p class="foot">Duygu Beauty · Hauptstraße 22 · Gaggenau</p>
+</section>
+</body>
+</html>
